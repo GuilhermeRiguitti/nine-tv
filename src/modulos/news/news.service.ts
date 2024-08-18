@@ -1,4 +1,5 @@
-import prismaClient from "../../../prisma/client/prisma-client";
+
+import { prismaClient } from "../prisma-lient/prisma-client";
 import { NewsPreviewModel } from "./models";
 import { Prisma, StatsEnumDb } from "@prisma/client";
 
@@ -57,6 +58,7 @@ export class NewsService {
     };
 
     async getHighlights(qtd: number): Promise<NewsPreviewModel[]> {
+        console.log(StatsEnumDb)
         const highlights = await prismaClient.newsDb.findMany({
             where: {
                 ...this.whereNoticiaAtiva,
