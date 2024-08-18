@@ -1,5 +1,5 @@
 
-import { prismaClient } from "../prisma-lient/prisma-client";
+import { prismaClient } from "../prisma-client/prisma-client";
 import { NewsPreviewModel } from "./models";
 import { Prisma, StatsEnumDb } from "@prisma/client";
 
