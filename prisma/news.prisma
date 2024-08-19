@@ -2,7 +2,7 @@ model NewsCategoryDb {
     id    Int         @id @default(autoincrement()) @map("id_category")
     name  String      @map("name_category") @db.VarChar(100)
     slug  String      @unique @db.VarChar(200)
-    stats StatsEnumDb @default(ENABLE)
+    stats StatusEnumDb @default(ENABLE)
 
     metaTitle       String? @db.VarChar(160)
     metaDescription String? @db.VarChar(500)
@@ -19,7 +19,7 @@ model NewsSubcatoryDb {
     id    Int         @id @default(autoincrement()) @map("id_subcategory")
     name  String      @map("name_subcategory") @db.VarChar(100)
     slug  String      @unique @db.VarChar(100)
-    stats StatsEnumDb @default(ENABLE)
+    stats StatusEnumDb @default(ENABLE)
 
     metaTitle       String? @db.VarChar(160)
     metaDescription String? @db.VarChar(500)
@@ -42,7 +42,7 @@ model NewsDb {
     text      String      @db.LongText
     autor     String      @db.VarChar(100)
     font      String      @db.VarChar(100)
-    stats     StatsEnumDb @default(ENABLE)
+    stats     StatusEnumDb @default(ENABLE)
     highlight Boolean
     slug      String      @unique @db.VarChar(200)
 

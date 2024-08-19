@@ -1,20 +1,20 @@
 
 import { prismaClient } from "../prisma-client/prisma-client";
 import { NewsPreviewModel } from "./models";
-import { Prisma, StatsEnumDb } from "@prisma/client";
+import { Prisma, StatusEnumDb } from "@prisma/client";
 
 export class NewsService {
 
     private whereNoticiaAtiva = {
-        stats: StatsEnumDb.ENABLE,
+        stats: StatusEnumDb.ENABLE,
         datePublication: {
             lte: new Date(),
         },
         category: {
-            stats: StatsEnumDb.ENABLE,
+            stats: StatusEnumDb.ENABLE,
         },
         subcategory: {
-            stats: StatsEnumDb.ENABLE,
+            stats: StatusEnumDb.ENABLE,
         }
     }
 
@@ -58,7 +58,7 @@ export class NewsService {
     };
 
     async getHighlights(qtd: number): Promise<NewsPreviewModel[]> {
-        console.log(StatsEnumDb)
+        console.log(StatusEnumDb)
         const highlights = await prismaClient.newsDb.findMany({
             where: {
                 ...this.whereNoticiaAtiva,
