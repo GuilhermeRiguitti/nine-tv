@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "prisma generate --schema prisma",
     "start": "next start -p 3005",
     "prisma-generate": "prisma generate --schema prisma",
     "migrate-dev": "prisma migrate dev --schema prisma",
