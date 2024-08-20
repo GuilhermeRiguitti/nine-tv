@@ -1,84 +1,83 @@
 model NewsCategoryDb {
-    id    Int          @id @default(autoincrement()) @map("id_category")
-    name  String       @map("name_category") @db.VarChar(100)
-    slug  String       @unique @db.VarChar(200)
-    stats StatusEnumDb @default(ENABLE)
+  id    Int          @id @default(autoincrement()) @map("id_category")
+  name  String       @map("name_category") @db.VarChar(100)
+  slug  String       @unique @db.VarChar(200)
+  stats StatusEnumDb @default(ENABLE)
 
-    metaTitle       String? @db.VarChar(160)
-    metaDescription String? @db.VarChar(500)
-    metaKeywords    String? @db.VarChar(500)
-    metaImage       String? @db.VarChar(60)
+  metaTitle       String? @db.VarChar(160)
+  metaDescription String? @db.VarChar(500)
+  metaKeywords    String? @db.VarChar(500)
+  metaImage       String? @db.VarChar(60)
 
-    news         NewsDb[]
-    subcategorys NewsSubcatoryDb[]
+  news         NewsDb[]
+  subcategorys NewsSubcatoryDb[]
 
-    @@map("tbl_news_category")
+  @@map("tbl_news_category")
 }
 
 model NewsSubcatoryDb {
-    id    Int          @id @default(autoincrement()) @map("id_subcategory")
-    name  String       @map("name_subcategory") @db.VarChar(100)
-    slug  String       @unique @db.VarChar(100)
-    stats StatusEnumDb @default(ENABLE)
+  id    Int          @id @default(autoincrement()) @map("id_subcategory")
+  name  String       @map("name_subcategory") @db.VarChar(100)
+  slug  String       @unique @db.VarChar(100)
+  stats StatusEnumDb @default(ENABLE)
 
-    metaTitle       String? @db.VarChar(160)
-    metaDescription String? @db.VarChar(500)
-    metaKeywords    String? @db.VarChar(500)
-    metaImage       String? @db.VarChar(60)
+  metaTitle       String? @db.VarChar(160)
+  metaDescription String? @db.VarChar(500)
+  metaKeywords    String? @db.VarChar(500)
+  metaImage       String? @db.VarChar(60)
 
-    category   NewsCategoryDb @relation(fields: [categoryId], references: [id])
-    categoryId Int            @map("id_category")
+  category   NewsCategoryDb @relation(fields: [categoryId], references: [id])
+  categoryId Int            @map("id_category")
 
-    news NewsDb[]
+  news NewsDb[]
 
-    @@unique([slug, categoryId])
-    @@map("tbl_news_subcategory")
+  @@unique([slug, categoryId])
+  @@map("tbl_news_subcategory")
 }
 
 model NewsDb {
-    id        Int          @id @default(autoincrement()) @map("id_news")
-    title     String       @db.VarChar(200)
-    subtitle  String       @db.VarChar(200)
-    text      String       @db.LongText
-    autor     String       @db.VarChar(100)
-    font      String       @db.VarChar(100)
-    stats     StatusEnumDb @default(ENABLE)
-    highlight Boolean
-    slug      String       @unique @db.VarChar(200)
+  id        Int          @id @default(autoincrement()) @map("id_news")
+  title     String       @db.VarChar(200)
+  subtitle  String       @db.VarChar(200)
+  text      String       @db.Text
+  autor     String       @db.VarChar(100)
+  font      String       @db.VarChar(100)
+  stats     StatusEnumDb @default(ENABLE)
+  highlight Boolean
+  slug      String       @unique @db.VarChar(200)
 
-    dateRegistration DateTime @default(now()) @db.DateTime(0)
-    datePublication  DateTime @default(now()) @db.DateTime(0)
-    dateChenge       DateTime @updatedAt @db.DateTime(0)
+  dateRegistration DateTime @default(now()) @db.Timestamp(0)
+  datePublication  DateTime @default(now()) @db.Timestamp(0)
+  dateChenge       DateTime @updatedAt @db.Timestamp(0)
 
-    imgPreview String? @db.VarChar(60)
-    imgDetail  String? @db.VarChar(60)
-    legendImg  String? @db.VarChar(50)
+  imgPreview String? @db.VarChar(60)
+  imgDetail  String? @db.VarChar(60)
+  legendImg  String? @db.VarChar(50)
 
-    metaTitle       String? @db.VarChar(160)
-    metaDescription String? @db.VarChar(500)
-    metaKeywords    String? @db.VarChar(500)
-    metaImage       String? @db.VarChar(60)
+  metaTitle       String? @db.VarChar(160)
+  metaDescription String? @db.VarChar(500)
+  metaKeywords    String? @db.VarChar(500)
+  metaImage       String? @db.VarChar(60)
 
-    category   NewsCategoryDb @relation(fields: [categoryId], references: [id])
-    categoryId Int            @map("id_category")
+  category   NewsCategoryDb @relation(fields: [categoryId], references: [id])
+  categoryId Int            @map("id_category")
 
-    subcategory   NewsSubcatoryDb @relation(fields: [subcategoryId], references: [id])
-    subcategoryId Int             @map("id_subcategory")
+  subcategory   NewsSubcatoryDb @relation(fields: [subcategoryId], references: [id])
+  subcategoryId Int             @map("id_subcategory")
 
-    images NewsImageDb[]
+  images NewsImageDb[]
 
-    @@fulltext([title, subtitle, text])
-    @@map("tbl_news")
+  @@map("tbl_news")
 }
 
 model NewsImageDb {
-    id       Int     @id @default(autoincrement()) @map("id_image")
-    imgSmall String  @db.VarChar(60)
-    imgBig   String  @db.VarChar(60)
-    legend   String? @db.VarChar(150)
+  id       Int     @id @default(autoincrement()) @map("id_image")
+  imgSmall String  @db.VarChar(60)
+  imgBig   String  @db.VarChar(60)
+  legend   String? @db.VarChar(150)
 
-    news   NewsDb @relation(fields: [newsId], references: [id], onDelete: Cascade)
-    newsId Int    @map("id_news")
+  news   NewsDb @relation(fields: [newsId], references: [id], onDelete: Cascade)
+  newsId Int    @map("id_news")
 
-    @@map("tbl_news_image")
+  @@map("tbl_news_image")
 }
