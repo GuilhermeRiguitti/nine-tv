@@ -92,8 +92,16 @@ export async function newsSeed(prisma: PrismaClient) {
     // adicionar 50 noticias avulsas apenas se não tiver nenhuma
     const news = await prisma.newsDb.findFirst();
     if (!news) {
-        const imgsPreview = ['ImgPreview-0.png', 'ImgPreview-1.png', 'ImgPreview-2.png'];
-        const imgDetail = 'ImgDetail-1.png';
+        const imgsPreview = [
+            'ImgPreview-0-835036Sr2vWQxArOlhRsxCiugNFQDw.png',
+            'ImgPreview-1-VVHqeIUrkoo10NDbHhFYY4RwMKs4tM.png',
+            'ImgPreview-2-mOJj6wCZ59myQWmiOyO5CPstDfGIpQ.png',
+            'ImgPreview-3-Hc1nlrZqi0LKHBgk5xTyvXVbtPYXkP.png',
+            'ImgPreview-4-Is1aG4frrZOHhBnh2KOVWqSwJpp6mp.png',
+            'ImgPreview-5-h1bn5ZJ86TS6ULouVx9zdaqC9kl84M.png'
+        ];
+        
+        const imgDetail = 'ImgDetail-1-QyNSLHemY81Aea8RSB3fewvBjRRy62.png';
 
         for (let i = 1; i <= 50; i++) {
             const randomImgLista = imgsPreview[Math.floor(Math.random() * imgsPreview.length)];

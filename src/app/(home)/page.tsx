@@ -9,7 +9,6 @@ export default async function HomePage() {
     return (
         <div className="grid grid-cols-7 p-10 bg-white gap-2">
             <div className="col-span-3">
-
                 <NewsHighlightSlide highlights={highlights} />
             </div>
             <div className="col-span-1">

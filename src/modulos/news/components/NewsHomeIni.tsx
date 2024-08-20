@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { NewsPreviewModel } from "../models";
-import { ImageConfig } from "@/modulos/config/ImageConfig";
+import { uploadUrl } from "@/modulos/config/helpers";
 
 type NewsHomeProps = {
     news: NewsPreviewModel[];
 };
 
 export function NewsHomeIni({ news }: NewsHomeProps) {
-    console.log({ ...ImageConfig.newsDb.imgPreview.getImage(news[1].imgPreview) })
+
     return (
         <div className="grid grid-cols-1 gap-2">
             {news?.map((news) => (
@@ -18,8 +18,9 @@ export function NewsHomeIni({ news }: NewsHomeProps) {
                         className="w-full "
                         width={179}
                         height={223}
-                        alt={`Doi`}
-                        {...ImageConfig.newsDb.imgPreview.getImage(news.imgPreview)}
+                        alt={news.title}
+                        src={uploadUrl('/', news.imgPreview)}
+                        unoptimized={true}
                     />
                     <div className="absolute bottom-0 p-2 z-20">
                         <p className="text-white text-14">{news.title}</p>

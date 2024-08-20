@@ -1,5 +1,5 @@
 
 export const FilePaths = {
-    News: 'upload/news',
+    News: '/',
     NewsImage: 'upload/news/fotos',
 }

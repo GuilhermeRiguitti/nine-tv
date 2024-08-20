@@ -58,7 +58,7 @@ export class NewsService {
     };
 
     async getHighlights(qtd: number): Promise<NewsPreviewModel[]> {
-        console.log(StatusEnumDb)
+   
         const highlights = await prismaClient.newsDb.findMany({
             where: {
                 ...this.whereNoticiaAtiva,
