@@ -9,9 +9,9 @@ type NewsHomeProps = {
 export function NewsHomeIni({ news }: NewsHomeProps) {
 
     return (
-        <div className="grid grid-cols-1 gap-2">
+        <div className="grid grid-cols-1 gap-[9px]">
             {news?.map((news) => (
-                <div key={news.id} className="relative">
+                <div key={news.id} className="relative rounded-[3px] overflow-hidden">
                     <div className="overlay-gradient absolute top-0 bottom-0 left-0 right-0 z-10">
                     </div>
                     <Image
@@ -22,8 +22,9 @@ export function NewsHomeIni({ news }: NewsHomeProps) {
                         src={uploadUrl('/', news.imgPreview)}
                         unoptimized={true}
                     />
-                    <div className="absolute bottom-0 p-2 z-20">
-                        <p className="text-white text-14">{news.title}</p>
+                    <div className="absolute bottom-0 p-2 z-20 text-white">
+                        <p className="text-16 font-medium">{news.title}</p>
+                        <time className="text-10 font-light">{news.datePublication.toLocaleDateString()}</time>
                     </div>
                 </div>
             ))}

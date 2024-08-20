@@ -13,8 +13,8 @@ export function Header() {
                     <div>
                         <Image
                             src={'/images/logo-v-2.png'}
-                            width={200}
-                            height={143}
+                            width={150}
+                            height={99}
                             alt='Nine TV Logo'
                         />
                     </div>
@@ -41,16 +41,16 @@ export function Header() {
                         <NavigationMenu>
                             <NavigationMenuList className="flex gap-2">
                                 <NavigationMenuItem>
-                                    <Link href="/docs" legacyBehavior passHref>
+                                    <Link href="/" legacyBehavior passHref>
                                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                            Documentation
+                                            Home
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <Link href="/docs" legacyBehavior passHref>
+                                    <Link href="/news" legacyBehavior passHref>
                                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                            Become
+                                            Notícias
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>

@@ -55,7 +55,7 @@ const config: Config = {
       },
       textColor: {
         primary: {
-          light: '#E0E0E0',
+          light: '#BBBBBB',
           DEFAULT: "#0057FF",
           dark: '#999999'
         },
@@ -102,13 +102,19 @@ const config: Config = {
         },
       },
       fontSize: {
+        "10": "10px",
+        "11": "11px",
+        "12": "12px",
+        "14": "14px",
+        "15": "15px",
+        "16": "16px",
+        "17": "17px",
+        "18": "18px",
         "20": "20px",
         "23": "23px",
+        "26": "26px",
         "32": "32px",
         "35": "35px",
-        "16": "16px",
-        "14": "14px",
-        "12": "12px",
       }
     },
     screens: {

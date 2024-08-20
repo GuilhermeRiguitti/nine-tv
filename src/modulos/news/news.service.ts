@@ -58,7 +58,6 @@ export class NewsService {
     };
 
     async getHighlights(qtd: number): Promise<NewsPreviewModel[]> {
-   
         const highlights = await prismaClient.newsDb.findMany({
             where: {
                 ...this.whereNoticiaAtiva,
@@ -73,4 +72,34 @@ export class NewsService {
         }
         return highlights;
     };
+
+    async getLastNews(qtd: number): Promise<NewsPreviewModel[]> {
+        const news = await prismaClient.newsDb.findMany({
+            where: {
+                ...this.whereNoticiaAtiva,
+            },
+            orderBy: { datePublication: 'desc' },
+            take: qtd
+        });
+
+        if (!news) {
+            return [];
+        }
+        return news;
+    };
+
+    async getAllNews(): Promise<NewsPreviewModel[]> {
+        const news = await prismaClient.newsDb.findMany({
+            where: {
+                ...this.whereNoticiaAtiva,
+            },
+            orderBy: { datePublication: 'desc' },
+        });
+
+        if (!news) {
+            return [];
+        }
+        return news;
+    };
+
 }

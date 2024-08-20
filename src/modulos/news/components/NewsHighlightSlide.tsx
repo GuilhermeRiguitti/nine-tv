@@ -22,7 +22,7 @@ export function NewsHighlightSlide({ highlights }: NewsHighlightIni) {
             modules={[Navigation, Pagination, Scrollbar, A11y]}
         >
             {highlights?.map(news => (
-                <SwiperSlide key={news.id} className="relative">
+                <SwiperSlide key={news.id} className="relative rounded-[3px] overflow-hidden">
                     <div className="overlay-gradient absolute top-0 bottom-0 left-0 right-0 z-10">
                     </div>
                     <Image
@@ -33,8 +33,10 @@ export function NewsHighlightSlide({ highlights }: NewsHighlightIni) {
                         alt={news.title}
                         unoptimized={true}
                     />
-                    <div className="absolute bottom-0 p-8 z-20">
-                        <p className="text-white text-32">{news.title}</p>
+                    <div className="absolute bottom-0 p-8 z-20 text-white">
+                        <p className="text-26 font-medium">{news.title}</p>
+                        <p className="text-13">{news.subtitle}</p>
+                        <time className="text-11 font-light">{news.datePublication.toLocaleDateString()}</time>
                     </div>
                 </SwiperSlide>
             ))}
